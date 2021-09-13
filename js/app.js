@@ -5,6 +5,8 @@ const loadProducts = () => {
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
+//call for load products
+loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
@@ -87,9 +89,6 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
-//call for load products and show total before choose
-loadProducts();
-updateTotal();
 
 //load single product
 const loadDetails = id => {
