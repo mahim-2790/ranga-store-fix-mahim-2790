@@ -114,7 +114,7 @@ const showDetails = product => {
       <p>Reviews: ${product.rating.count}</p>  
       <div>               
         <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning mx-5">Add to cart</button>
-        <button id="details-btn" class="btn btn-secondary" onclick="hideDiv()">Cancle</button>
+        <button id="details-btn" class="btn btn-danger" onclick="hideDiv()">Cancle</button>
       </div>
     </div>
   `;
