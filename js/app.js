@@ -1,3 +1,4 @@
+//load products
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
@@ -7,11 +8,8 @@ const loadProducts = () => {
 
 // show all product in UI 
 const showProducts = (products) => {
-  console.log(products);
-
   const allProducts = products.map((pd) => pd);
   console.log(allProducts);
-
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
@@ -35,6 +33,7 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+//adding to cart
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -43,7 +42,7 @@ const addToCart = (id, price) => {
   updateTotal();
   document.getElementById("total-Products").innerText = count;
 };
-
+//extract values
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
@@ -61,7 +60,6 @@ const updatePrice = (id, value) => {
 // set innerText function
 const setInnerText = (id, value) => {
   value = parseFloat(value).toFixed(2);
-  // console.log(parseFloat(value));
   document.getElementById(id).innerText = value;
 };
 
@@ -89,16 +87,18 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+//call for load products and show total before choose
 loadProducts();
 updateTotal();
 
+//load single product
 const loadDetails = id => {
   const url = `https://fakestoreapi.com/products/${id}`
   fetch(url)
     .then(res => res.json())
     .then(data => showDetails(data));
 };
-
+//show single product detail
 const showDetails = product => {
   const detailDiv = document.getElementById('show-details');
   detailDiv.innerHTML = `
@@ -120,7 +120,7 @@ const showDetails = product => {
   `;
   detailDiv.style.display = 'flex';
 };
-
+//hiding single product div
 const hideDiv = () => {
   document.getElementById('show-details').style.display = 'none';
 }
