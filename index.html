@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FakeStore</title>
+  <link rel="shortcut icon" href="./images/carts.png" type="image/x-icon">
+  <title>Kine Felo</title>
   <link rel="stylesheet" href="./css/style.css" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -20,21 +21,28 @@
 <body>
   <header></header>
   <main class="main">
-    <div class="search-field">
-      <div class="search-box">
+    <!-- -----------------search---------- -->
+    <div class="search-box">
+      <div class="search-box-element">
         <input id="input-field" class="search-field" type="text" />
-        <button type="button" class="btn btn-primary search-button" data-toggle="button" aria-pressed="false"
+        <button type="button" class="btn btn-warning search-button" data-toggle="button" aria-pressed="false"
           autocomplete="off" id="search-btn">
           Search
         </button>
       </div>
     </div>
+    <!-- ----------products---------- -->
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
+        <!-- show details -->
+        <div id="show-details">
+
+        </div>
         <div id="all-products" class="">
-          <!-- <h1></h1> -->
         </div>
       </div>
+
+      <!-- ----------------cart----------- -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
           <table class="table">
@@ -80,7 +88,7 @@
             </tbody>
           </table>
           <div class="parces text-center">
-            <button class="btn btn-primary text-center">Buy Now</button>
+            <button class="btn btn-danger text-center">Buy Now</button>
           </div>
         </div>
       </div>

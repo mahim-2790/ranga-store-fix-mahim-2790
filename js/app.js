@@ -4,7 +4,6 @@ const loadProducts = () => {
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
-loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
@@ -22,13 +21,15 @@ const showProducts = (products) => {
         <div>
           <img class="product-image" src=${image}></img>
         </div>
-        <h3>${product.title}</h3>
+        <h4>${product.title}</h4>
         <p>Category: ${product.category}</p>
-        <h2>Price: $ ${product.price}</h2>
+        <h3>Price: $ ${product.price}</h3>
         <p>Rating: ${product.rating.rate}</p>
-        <p>Reviews: ${product.rating.count}</p>                 
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button id="details-btn" class="btn btn-danger">Details</button>
+        <p>Reviews: ${product.rating.count}</p>  
+        <div>               
+          <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning mx-5">Add to cart</button>
+          <button id="details-btn" class="btn btn-secondary" onclick="loadDetails(${product.id})">Details</button>
+        </div>
       </div>
       `;
     document.getElementById("all-products").appendChild(div);
@@ -88,8 +89,38 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+loadProducts();
 updateTotal();
 
-const fetchRating = () => {
+const loadDetails = id => {
+  const url = `https://fakestoreapi.com/products/${id}`
+  fetch(url)
+    .then(res => res.json())
+    .then(data => showDetails(data));
+};
 
+const showDetails = product => {
+  const detailDiv = document.getElementById('show-details');
+  detailDiv.innerHTML = `
+    <div class="single-product product-details">
+      <div>
+        <img class="product-image" src=${product.image}></img>
+      </div>
+      <h3>${product.title}</h3>
+      <p>Description: ${product.description}</p>
+      <p>Category: ${product.category}</p>
+      <h3>Price: $ ${product.price}</h3>
+      <p>Rating: ${product.rating.rate}</p>
+      <p>Reviews: ${product.rating.count}</p>  
+      <div>               
+        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning mx-5">Add to cart</button>
+        <button id="details-btn" class="btn btn-secondary" onclick="hideDiv()">Cancle</button>
+      </div>
+    </div>
+  `;
+  detailDiv.style.display = 'flex';
+};
+
+const hideDiv = () => {
+  document.getElementById('show-details').style.display = 'none';
 }
